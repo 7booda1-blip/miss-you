@@ -1,35 +1,130 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>رسالة خاصة</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-    h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    p { font-size: 1.2rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يا هلا بيك يا صاحبي!</title>
+    <!-- استدعاء مكتبة لعمل تأثيرات الاحتفال والقلوب -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-15px);}
+            60% {transform: translateY(-7px);}
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #f8fafc;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #e2e8f0;
+        }
+        .btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            margin: 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>يا هلا بـ أجدع صاحب! ❤️</h1>
-    <p>وحشتني جداً ولك وحشة والله، حبيت أبعث لك الرسالة دي وأطمن عليك!</p>
-  </div>
+
+    <div class="container">
+        <div class="emoji">❤️</div>
+        <h1>يا هلا بأجدع صاحب!</h1>
+        <p>والله لك وحشة كبيرة يا صاحبي، والدنيا بدون طلتك ناقصة كتير. حبيت أعملك المفاجأة دي عشان أقولك إنك دايماً في البال!</p>
+        
+        <div>
+            <button class="btn" onclick="celebrate()">اضغط هنا للمفاجأة 🎉</button>
+            <a href="https://wa.me/?text=نورت%20الرابط%20يا%20غالي%2C%20منورني%20والله!" target="_blank" class="btn btn-secondary">رد على الرسالة 💬</a>
+        </div>
+        
+        <div class="footer">صُنعت بكل حب ومودة لصديق العمر ✨</div>
+    </div>
+
+    <script>
+        function celebrate() {
+            // إطلاق تأثيرات احتفالية بالقلوب والقصاصات الملونة
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+        
+        // تشغيل تأثير خفيف عند فتح الصفحة لأول مرة
+        window.onload = function() {
+            setTimeout(celebrate, 500);
+        }
+    </script>
 </body>
 </html>
+
